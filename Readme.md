@@ -33,6 +33,15 @@ Platform9 provides OS environment variables. They should be exported.
  OS_AUTH_URL=xxx
  ```
 
+## Variables
+
+- `agents`: Amount of agent nodes to provide. Defaults to 1.
+- `cms`:    Amount of compile master nodes to provide. Default: 0.
+- `domain`: Fully qualified domain. Default: platform9.puppet.net.
+- `autosign_pwd`: CSR attribute to allow autosigning. Default: S3cr3tP@ssw0rd!.
+- `console_pwd`: PE Console passwotd for user `admin`. Defaut: puppetlabs.
+- `r10K_remote`: Control repo url. Only http/https supported. Default: https://github.com/LMacchi/my-control-repo.git.
+
 ## Usage
 
 - Run `terraform init` to initialize your terraform project

@@ -3,7 +3,7 @@ provider "openstack" {}
 
 # Variable to control infrastructure nodes
 variable "agents" {
-  default = "2"
+  default = "1"
 }
 variable "cms" {
   default = "0"
