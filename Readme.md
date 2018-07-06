@@ -1,5 +1,8 @@
 # PE templates for Terraform with Platform9 provisioner
 
+## Boxes provided
+- Centos 7 master with PE latest
+
 ## Prep
 Platform9 provides OS environment variables. They should be available.
 
