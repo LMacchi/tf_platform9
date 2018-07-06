@@ -3,6 +3,7 @@
 ## Boxes provided
 - Centos 7 master with PE latest
 - Centos 7 agents (use `export TF_VAR_agents=5` before running `terraform apply`. Default = 1)
+- Centos 7 compile masters (use `export TF_VAR_cms=1` before running `terraform apply`. Default = 0)
 
 ## Prep
 Platform9 provides OS environment variables. They should be exported.
