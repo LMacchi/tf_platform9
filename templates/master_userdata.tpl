@@ -1,4 +1,7 @@
 #cloud-config
+hostname: master
+fqdn: master.platform9.puppet.net
+manage_etc_hosts: true
 packages:
   - vim
   - wget

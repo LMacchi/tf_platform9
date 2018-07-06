@@ -2,9 +2,10 @@
 
 ## Boxes provided
 - Centos 7 master with PE latest
+- Centos 7 agents (use `export TF_VAR_agents=5` before running `terraform apply`. Default = 1)
 
 ## Prep
-Platform9 provides OS environment variables. They should be available.
+Platform9 provides OS environment variables. They should be exported.
 
 ```
  lmacchi@Pulpo 20:19:26 /tmp>  git clone git@github.com:LMacchi/tf_platform9.git
@@ -66,6 +67,8 @@ commands will detect it and remind you to do so if necessary.
 ```
 
 - Update master.tf with your specific data, like `key_pair`, `security_groups`, etc.
+
+- Update `files/custom-pe.conf` as needed.
 
 - Add your private key to the `files` directory + update `master.tf` key path
 
