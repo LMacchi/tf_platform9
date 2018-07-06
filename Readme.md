@@ -35,12 +35,13 @@ Platform9 provides OS environment variables. They should be exported.
 
 ## Variables
 
-- `agents`: Amount of agent nodes to provide. Defaults to 1.
-- `cms`:    Amount of compile master nodes to provide. Default: 0.
-- `domain`: Fully qualified domain. Default: platform9.puppet.net.
-- `autosign_pwd`: CSR attribute to allow autosigning. Default: S3cr3tP@ssw0rd!.
-- `console_pwd`: PE Console passwotd for user `admin`. Defaut: puppetlabs.
-- `r10K_remote`: Control repo url. Only http/https supported. Default: https://github.com/LMacchi/my-control-repo.git.
+- `agents`: Amount of agent nodes to provide. Defaults to `1`.
+- `cms`:    Amount of compile master nodes to provide. Default: `0`.
+- `domain`: Fully qualified domain. Default: `platform9.puppet.net`.
+- `autosign_pwd`: CSR attribute to allow autosigning. Default: `S3cr3tP@ssw0rd!`.
+- `console_pwd`: PE Console passwotd for user `admin`. Defaut: `puppetlabs`.
+- `r10K_remote`: Control repo url. Only http/https supported. Default: `https://github.com/LMacchi/my-control-repo.git`.
+- `ssh_priv_key_path`: Relative path to your private key. Default: `files/lmacchi_private_key.rsa`
 
 ## Usage
 
@@ -78,9 +79,7 @@ commands will detect it and remind you to do so if necessary.
 
 - Update master.tf with your specific data, like `key_pair`, `security_groups`, etc.
 
-- Update `files/custom-pe.conf` as needed.
-
-- Add your private key to the `files` directory + update `master.tf` key path
+- Update `templates/custom-pe.conf.tpl` as needed.
 
 ```
 ★ lmacchi@Pulpo 20:23:09 /tmp/tf_platform9> (master) cp ~/.ssh/id_rsa files/lmacchi_private_key.rsa

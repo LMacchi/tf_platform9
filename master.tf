@@ -3,7 +3,7 @@ provider "openstack" {}
 
 # Variable to control infrastructure nodes
 variable "agents" {
-  default = "1"
+  default = "2"
 }
 variable "cms" {
   default = "0"
@@ -21,6 +21,11 @@ variable "console_pwd" {
 }
 variable "r10k_remote" {
   default = "https://github.com/LMacchi/my-control-repo.git"
+}
+
+# Openstack variables
+variable "ssh_priv_key_path" {
+  default = "files/lmacchi_private_key.rsa"
 }
 
 # File templates
@@ -108,7 +113,7 @@ resource "openstack_compute_floatingip_associate_v2" "master" {
     host        = "${openstack_networking_floatingip_v2.master.address}"
     type        = "ssh"
     user        = "centos"
-    private_key = "${file("${path.module}/files/lmacchi_private_key.rsa")}"
+    private_key = "${file("${path.module}/${var.ssh_priv_key_path}")}"
   }
 
   provisioner "remote-exec" {
@@ -220,7 +225,7 @@ resource "openstack_compute_floatingip_associate_v2" "cm" {
     host        = "${openstack_networking_floatingip_v2.master.address}"
     type        = "ssh"
     user        = "centos"
-    private_key = "${file("${path.module}/files/lmacchi_private_key.rsa")}"
+    private_key = "${file("${path.module}/${var.ssh_priv_key_path}")}"
   }
 
   # Sign CM certificate in master
