@@ -16,17 +16,17 @@ if [ $? -ne 0 ]; then
   rm -fr /root/puppet-enterprise-*
 fi
 /opt/puppetlabs/puppet/bin/puppet agent -t
-echo "puppetlabs" | /opt/puppetlabs/bin/puppet-access login admin --lifetime 90d && /
-echo "Deploying puppet code from version control server" && /
-/home/centos/puppet_scripts/deploy_code.sh && /
-echo "Clearing environments cache" && /
-/home/centos/puppet_scripts/update_environments.sh && /
-echo "Clearing classifier cache" && /
-/home/centos/puppet_scripts/update_classes.sh && /
-/opt/puppetlabs/puppet/bin/puppet apply /home/centos/puppet_scripts/classification.pp && /
-echo "Clearing environments cache" && /
-/home/centos/puppet_scripts/update_environments.sh && /
-echo "Clearing classifier cache" && /
+echo "puppetlabs" | /opt/puppetlabs/bin/puppet-access login admin --lifetime 90d && \
+echo "Deploying environment production from version control server" && \
+/opt/puppetlabs/bin/puppet-code deploy production --wait && \
+echo "Clearing environments cache" && \
+/home/centos/puppet_scripts/update_environments.sh && \
+echo "Clearing classifier cache" && \
+/home/centos/puppet_scripts/update_classes.sh && \
+/opt/puppetlabs/puppet/bin/puppet apply /home/centos/puppet_scripts/classification.pp && \
+echo "Clearing environments cache" && \
+/home/centos/puppet_scripts/update_environments.sh && \
+echo "Clearing classifier cache" && \
 /home/centos/puppet_scripts/update_classes.sh
 /usr/local/bin/puppet agent -t
 exit 0
